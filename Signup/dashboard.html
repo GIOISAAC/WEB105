@@ -1,0 +1,139 @@
+<header>
+  <link rel="stylesheet" href="dashboard.css"> 
+  <script src="dashboard.js"></script>
+  <nav>
+    <img src="images/logoo.png" class="logo"> 
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#top-games">Top Games</a></li>
+      <li><a href="#latest-games">Latest Games</a></li>
+    </ul>
+
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search for games...">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </div>
+  </nav>
+  
+  <div class="genre-bar">
+    <div class="genre-container">
+      <div class="genre-item" data-genre="all">All</div>
+      <div class="genre-item" data-genre="action">Action</div>
+      <div class="genre-item" data-genre="mmo">MMO</div>
+      <div class="genre-item" data-genre="horror">Horror</div>
+      <!-- Add more genre items as needed -->
+    </div>
+  </div>
+</header>
+
+
+
+<main>
+
+  
+
+
+  <div class="game-listings">
+    <ul>
+      <li data-genre="action">
+        <div class="game-item">
+          <label class="game-label">
+            <img src="images/action.jpg" alt="Cyberpunk">
+          
+            <span class="game-title">Cyberpunk</span>
+          </label>
+
+          
+          <div class="game-details">
+            <a href="sales.html?title=Cyberpunk" class="price-button">$50.99</a>
+          </div>
+        </div>
+
+        
+      </li>
+
+      
+      <li data-genre="mmo">
+        <div class="game-item">
+          <label class="game-label">
+            <img src="images/adven.jpg" alt="Creed">
+            <span class="game-title">Creed</span>
+          </label>
+          <div class="game-details">
+            <a href="sales.html?title=Creed" class="price-button">$19.99</a>
+           
+          </div>
+        </div>
+      </li>
+      <!-- e game listings with appropriate data-genre attributes -->
+    </ul>
+    <!-structure for other genre categories -->
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+</main>
+
+<script>
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var priceButtons = document.querySelectorAll(".price-button");
+
+  if (priceButtons) {
+    priceButtons.forEach(function(button) {
+      button.addEventListener("click", function() {
+        // Redirect to purchase.html
+       
+
+        var gameTitle = this.parentNode.querySelector(".game-title").textContent;
+        // Redirect to purchase.html with the game title as a query parameter
+        window.location.href = "sales.html?title=" + encodeURIComponent(gameTitle);
+      }); 
+    });
+  }
+});
+  document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('searchInput');
+    const gameListings = document.querySelectorAll('.game-listings li');
+
+    // Search functionality
+    searchInput.addEventListener('input', function() {
+      const searchTerm = searchInput.value.trim().toLowerCase();
+      
+      gameListings.forEach(function(game) {
+        const title = game.querySelector('.game-title').textContent.toLowerCase();
+        if (title.includes(searchTerm)) {
+          game.style.display = 'block'; // Show matching games
+        } else {
+          game.style.display = 'none'; // Hide non-matching games
+        }
+      });
+    });
+
+    // Genre filtering functionality
+    const genreItems = document.querySelectorAll('.genre-item');
+    genreItems.forEach(function(genreItem) {
+      genreItem.addEventListener('click', function() {
+        const selectedGenre = genreItem.dataset.genre.toLowerCase();
+        
+        gameListings.forEach(function(game) {
+          const gameGenre = game.dataset.genre.toLowerCase();
+          if (selectedGenre === 'all' || selectedGenre === gameGenre) {
+            game.style.display = 'block'; // Show matching games or all games if 'All' is selected
+          } else {
+            game.style.display = 'none'; // Hide non-matching games
+          }
+        });
+      });
+    });
+  });
+</script>

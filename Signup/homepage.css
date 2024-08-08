@@ -1,0 +1,390 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.hero {
+    width: 150%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(12, 3, 51, 0.3), rgba(12, 3, 51, 0.3));
+    position: relative;
+    padding: 0.5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+}
+
+
+.hero.show-MMO {
+    background-image: url("images/lostark.jpg");
+    background-size:75% 100%;
+    background-position: left;
+    background-repeat: no-repeat;
+}
+
+
+.hero.show-action {
+    background-image: url("images/action.jpg");
+    background-size:75% 100%;
+    background-position:left;
+    background-repeat: no-repeat;
+}
+
+.hero.show-FPS {
+    background-image: url("images/ghost-recon-breakpoint-1.jpg.webp");
+    background-size:75% 100%;
+    background-position:left;
+    background-repeat: no-repeat;
+}
+
+.hero.show-adventure {
+    background-image: url("images/adven.jpg");
+    background-size:75% 100%;
+    background-position:left;
+    background-repeat: no-repeat;
+}
+
+.hero.show-sports {
+    background-image: url("images/arsenal.jpg");
+    background-size:70% 100%;
+    background-position:left;
+    background-repeat: no-repeat;
+}
+
+.hero.show-fighting {
+    background-image: url("images/fight.jpg");
+    background-size:75% 100%;
+    background-position:left;
+    background-repeat: no-repeat;
+}
+
+.hero.show-horror {
+    background-image: url("images/horro.jpg");
+    background-size:75% 100%;
+    background-position:left;
+    background-repeat: no-repeat;
+}
+
+.hero.show-BattleRoyale {
+    background-image: url("images/battle.jpg");
+    background-size:75% 100%;
+    background-position:left;
+    background-repeat: no-repeat;
+}
+
+.hero.show-racing {
+    background-image: url("images/race.png");
+    background-size:75% 100%;
+    background-position:left;
+    background-repeat: no-repeat;
+}
+
+
+
+
+nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 40px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly; 
+    width: 40%; 
+}
+
+nav .logo {
+    width: 100px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0; 
+}
+
+nav ul li {
+    margin-right: 60px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 17px;
+}
+
+nav ul li a:hover {
+    color: #ffcc00; 
+    text-decoration: underline; 
+    transition: color 0.3s ease, text-decoration 0.3s ease; 
+}
+
+
+
+
+
+.tab-items {
+   
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tab-items:hover {
+    background-color: rgba(174, 174, 28, 0.793); 
+    cursor: pointer;
+    color: #fff;
+    transform: scale(1.1); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+
+
+
+
+
+.back-video {
+    position:absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+@media (min-aspect-ratio: 16/9) {
+    .back-video {
+        width: 100%;
+        height:fit-content;
+    }
+}
+
+@media (max-aspect-ratio: 16/9) {
+    .back-video {
+        width:fit-content;
+        height: 100%;
+    }
+}
+
+/* Additional styles for the tab-like section */
+
+.bottom-tab {
+    position: fixed;
+    bottom: 20px; /* Adjusted position */
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Black transparent background */
+    color: white;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.tab-row {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px; /* Spacing between rows */
+}
+
+.tab-items {
+    flex: 1;
+    padding: 8px; /* Adjusted padding inside each box */
+    border: 1px solid rgba(255, 255, 255, 0.5); /* Black transparent border */
+    border-radius: 8px; /* Rounded corners */
+    margin: 0 5px; /* Adjusted spacing between items */
+    min-width: 60px; /* Adjusted minimum width of each box */
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+
+
+/* CLICK POP UP CODE */
+
+
+
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 1000;
+    padding: 50px 100px;
+    overflow-y: auto;
+  }
+  
+  .popup span {
+    display: block;
+    width: 20%;
+    height: 20%;
+    padding: 20px;
+    box-sizing: border-box;
+    float: left;
+    font-size: 24px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: rgb(4, 4, 4);
+    margin: 10px;
+    transform: translateY(100%);
+    opacity: 0;
+    animation: popUp 1s forwards;
+  }
+  
+  .popup span:nth-child(4n+1) {
+    clear: left;
+  }
+  
+  @keyframes popUp {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+
+
+
+
+
+
+
+  .popup2 {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 1000;
+    padding: 50px 100px;
+  }
+  
+  .popup2 span {
+    display: block;
+    width: 20%;
+    height: 20%;
+    padding: 20px;
+    box-sizing: border-box;
+    float: left;
+    font-size: 24px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: rgb(47, 39, 39);
+    margin: 10px;
+    transform: translateY(100%);
+    opacity: 0;
+    animation: popUp 1s forwards;
+  }
+  
+  .popup2 span:nth-child(4n+1) {
+    clear: left;
+  }
+  
+  @keyframes popUp {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+
+
+
+
+
+  .popup span img, .popup2 span img {
+    width: 100%;
+    height: 90%;
+    margin-right: 10px;
+    border-radius: 10px;
+    float: left;
+  }
+  
+  
+
+  .popup span, .popup2 span {
+    display: block;
+    width: 20%; /* Adjust the width to your desired size */
+    height: 30%; /* Adjust the height to your desired size */
+    padding: 20px;
+    box-sizing: border-box;
+    float: left;
+    font-size: 24px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    margin: 10px;
+    transform: translateY(100%);
+    opacity: 0;
+    animation: popUp 1s forwards;
+    border: 4px solid transparent; /* Add a transparent border */
+  transition: border-color 0.3s ease; /* Add a transition effect to the border color */
+  }
+
+  .popup span:hover, .popup2 span:hover {
+    border-color: rgb(174, 174, 28, 0.793);
+    animation: popUp 1s forwards;
+    animation-play-state: running; /* Start the animation on hover */
+  }
+
+
+  
+  @keyframes popUp {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

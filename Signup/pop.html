@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form with Pop-up</title>
+</head>
+<body>
+
+<form id="loginForm">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+
+    <br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required onfocus="checkUsernameFilled()">
+
+    <br>
+
+    <button type="button" onclick="validateLogin()">Login</button>
+</form>
+
+<script>
+    function checkUsernameFilled() {
+        var username = document.getElementById("username").value;
+        var passwordField = document.getElementById("password");
+
+        if (username === "") {
+            alert("Please enter information in the required field (Username) before focusing on the password field.");
+            passwordField.blur(); // Unfocus the password field
+        }
+    }
+
+    function validateLogin() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        if (username === "") {
+            alert("Please enter information in the required field (Username) before entering the password.");
+        } else {
+            // Perform your actual login logic here
+            alert("Login successful! Redirecting..."); // For demonstration purposes
+        }
+    }
+</script>
+
+</body>
+</html>

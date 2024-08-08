@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment</title>
+
+  <style>
+    /* Global Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url('images/LoginBackground.jpg');
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Payment Container Styles */
+    .payment-container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 400px;
+    }
+
+    /* Payment Header Styles */
+    .payment-header {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      border-radius: 10px 10px 0 0;
+      text-align: center;
+    }
+
+    /* Payment Body Styles */
+    .payment-body {
+      padding: 20px;
+    }
+
+    /* Game Image Styles */
+    #gameImage {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    /* Game Details Styles */
+    .game-details {
+      margin-top: 20px;
+    }
+
+    /* Payment Label Styles */
+    #paymentLabel {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(210, 35, 35, 0.7);
+      color: #FF5733;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    /* Payment Button Styles */
+    .payment-button {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .payment-button:hover {
+      background-color: #444;
+    }
+  </style>
+
+</head>
+<body>
+  <div class="payment-container">
+    <div class="payment-header">
+      <h1 id="paymentHeading">Payment</h1>
+    </div>
+    <div class="payment-body">
+      <div id="gameImageContainer">
+        <p id="paymentLabel"></p>
+        <img id="gameImage" src="" alt="Game Image">
+      </div>
+      <div class="game-details">
+        <p id="gameTitle"></p>
+        <p id="gamePrice"></p>
+      </div>
+      <button class="payment-button">Make Payment</button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const gameTitle = urlParams.get('title');
+      const gameDetails = document.getElementById('gameDetails');
+      const gameImage = document.getElementById('gameImage');
+      const gameTitleElement = document.getElementById('gameTitle');
+      const gamePriceElement = document.getElementById('gamePrice');
+
+      // Mock game data - Replace this with your actual game data
+      const gameData = {
+        "Cyberpunk": {
+          imageUrl: "images/cyberpunk_2077.jpg",
+          price: "$50.99"
+        },
+        "Creed": {
+          imageUrl: "images/Creed.jpg",
+          price: "$19.99"
+        }
+        // Add more game data as needed
+      };
+
+      if (gameTitle && gameData.hasOwnProperty(gameTitle)) {
+        const game = gameData[gameTitle];
+        gameImage.src = game.imageUrl;
+        gameTitleElement.textContent = gameTitle;
+        gamePriceElement.textContent = `Price: ${game.price}`;
+      } else {
+        // Handle the case where the game title is not provided or invalid
+        gameDetails.innerHTML = '<p>No game information found.</p>';
+      }
+    });
+  </script>
+</body>
+</html>

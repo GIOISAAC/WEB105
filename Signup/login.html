@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <title>Login Form</title>
+</head>
+<body>
+    <form id="loginForm">
+        <label for="firstName">userID:</label>
+        <input type="text" id="firstName" name="firstName" required onfocus="checkFieldPriority('firstName')" oninput="resetFieldHighlight('firstName'), validateLogin()">
+
+    
+        <br>
+
+       
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required onfocus="checkFieldPriority('password')" oninput="resetFieldHighlight('password'), validateLogin()">
+
+        <br>
+
+       
+
+        <button type="button" onclick="validateLogin()"><a href="dashboard.html">Login</a>
+    </form>
+
+    <div id="popupMessage" class="popup">
+        <p id="popupText"></p>
+    </div>
+
+    <div id="customDialogOverlay" class="overlay">
+        <div id="customDialog" class="dialog">
+            <p id="customDialogMessage"></p>
+      
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html>

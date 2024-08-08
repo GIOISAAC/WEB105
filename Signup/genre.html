@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sales</title>
+  
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0; /* Background color for the page */
+      background-image: url('freeimage/fin.jpg');
+  background-size: cover;
+    }
+
+    #gameDetails {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      color: aliceblue;
+    }
+
+    .game-info {
+      margin-left: 50px;
+    }
+
+    .game-info h1 {
+      font-size: 45px;
+      margin-bottom: 50px;
+      color: aliceblue;
+    }
+
+    .game-info p {
+      font-size: 36px;
+    }
+
+    /* Adjust the size of the image */
+    img {
+      max-width: 700px; /* Adjust as needed */
+      height: 500px;
+     
+      margin-right: 130px;
+    }
+
+   
+
+
+    #systemRequirements {
+        background-color: rgba(52, 52, 43, 0.793);  /* Background color for system requirements */
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      color: aliceblue;
+    }
+
+    #systemRequirements li {
+      list-style: none;
+    }
+
+    #systemRequirements ul {
+      padding-left: 20px;
+    }
+
+
+    #gameplaySection {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#gameplayImages {
+  display: flex;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  margin-bottom: 20px;
+}
+
+#gameplayImages img {
+  max-width: 300px;
+  height: auto;
+  margin-right: 10px;
+}
+
+#downloadButton {
+  display: block;
+  width: 150px;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+#downloadButton:hover {
+  background-color: #0056b3;
+}
+
+
+    
+  </style>
+
+</head>
+<body>
+  <div id="gameDetails">
+    <img id="gameImage" alt="Game Image">
+    <div class="game-info">
+      <h1 id="gameTitle">Game Title</h1>
+      <p id="gameDescription">Game Description</p>
+      <p><strong><h1>System Requirements:</h1></strong></p>
+      <ul id="systemRequirements"></ul>
+    </div>
+  </div>
+
+  <section id="gameplaySection">
+    <h2>Gameplay Pictures</h2>
+    <div id="gameplayImages"></div> <!-- Empty div to append gameplay images -->
+    <a id="downloadButton" href="#">Download Now</a> <!-- Placeholder download button -->
+  </section>
+
+  <script>
+    const gameData = {
+      "Cyberpunk": {
+        imageUrl: "images/cyberpunk_2077.jpg",
+        description: "",
+        systemRequirements: {
+          minimum: {
+            cpu: "Intel Core i5-3570K or AMD FX-8310",
+            gpu: "NVIDIA GeForce GTX 780 or AMD Radeon RX 470",
+            ram: "8 GB",
+            storage: "70 GB"
+          },
+          recommended: {
+            cpu: "Intel Core i7-4790 or AMD Ryzen 3 3200G",
+            gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 590",
+            ram: "12 GB",
+            storage: "70 GB"
+          }
+        },
+        gameplayImages: [
+          "images/cyberpunk_2077.jpg",
+          "freeimage/image2.jpg",
+          // Add more gameplay images as needed
+        ]
+      },
+      "Creed": {
+        imageUrl: "images/Creed.jpg",
+        description: "",
+        systemRequirements: {
+          minimum: {
+            cpu: "Intel Core i5-2500K or AMD FX-6350",
+            gpu: "NVIDIA GeForce GTX 760 or AMD Radeon R9 270X",
+            ram: "8 GB",
+            storage: "50 GB"
+          },
+          recommended: {
+            cpu: "Intel Core i7-4790 or AMD Ryzen 5 3600",
+            gpu: "NVIDIA GeForce GTX 1070 or AMD Radeon RX Vega 56",
+            ram: "16 GB",
+            storage: "50 GB"
+          }
+        },
+        gameplayImages: [
+          "images/creed_gameplay1.jpg",
+          "images/creed_gameplay2.jpg",
+          // Add more gameplay images as needed
+        ]
+      },
+      // Add more game titles and their corresponding system requirements as needed
+    };
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const gameTitle = urlParams.get('title');
+      const game = gameData[gameTitle];
+      
+      const gameImageElement = document.getElementById('gameImage');
+      gameImageElement.src = game.imageUrl;
+    
+      const gameTitleElement = document.getElementById('gameTitle');
+      gameTitleElement.textContent = gameTitle;
+    
+      const gameDescriptionElement = document.getElementById('gameDescription');
+      gameDescriptionElement.textContent = game.description;
+
+      const systemRequirementsElement = document.getElementById('systemRequirements');
+      systemRequirementsElement.innerHTML = '';
+
+      for (const category in game.systemRequirements) {
+        const categoryRequirements = game.systemRequirements[category];
+        const categoryListItem = document.createElement('li');
+        categoryListItem.textContent = `${category}:`;
+        systemRequirementsElement.appendChild(categoryListItem);
+
+        const categoryList = document.createElement('ul');
+        categoryListItem.appendChild(categoryList);
+
+        for (const key in categoryRequirements) {
+          const listItem = document.createElement('li');
+          listItem.textContent = `${key}: ${categoryRequirements[key]}`;
+          categoryList.appendChild(listItem);
+        }
+      }
+
+      // Display gameplay images
+      const gameplayImagesContainer = document.getElementById('gameplayImages');
+      const gameplayImages = game.gameplayImages;
+
+      gameplayImages.forEach(imageUrl => {
+        const imgElement = document.createElement('img');
+        imgElement.src = imageUrl;
+        gameplayImagesContainer.appendChild(imgElement);
+      });
+    });
+  </script>
+</body>
+</html>

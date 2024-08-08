@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sales</title>
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0; /* Background color for the page */
+      background-image: url('freeimage/fin.jpg');
+      background-size: cover;
+    }
+
+    #gameDetails {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      color: aliceblue;
+    }
+
+    .game-info { 
+      margin-left: 50px;
+    }
+
+    .game-info h1 {
+      font-size: 45px;
+      margin-bottom: 50px;
+      color: aliceblue;
+    }
+
+    .game-info p {
+      font-size: 36px;
+    }
+
+    /* Adjust the size of the image */
+    img {
+      max-width: 700px; /* Adjust as needed */
+      height: 500px;
+      margin-right: 130px;
+    }
+
+    #systemRequirements {
+      background-color: rgba(52, 52, 43, 0.793);  /* Background color for system requirements */
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      color: aliceblue;
+    }
+
+    #systemRequirements li {
+      list-style: none;
+    }
+
+    #systemRequirements ul {
+      padding-left: 20px;
+    }
+
+    #aboutGameSection {
+      margin-top: 40px;
+      padding: 20px;
+      background-color: rgba(52, 52, 43, 0.793); 
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    #aboutGameSection h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color:#fff
+    }
+
+    #aboutGameDescription {
+      font-size: 20px;
+      color: rgb(203, 201, 201); /* Text color */
+      padding: 10px; /* Padding inside the label */
+      border-radius: 5px; /* Rounded corners */
+    }
+
+    #gameplaySection {
+      margin-top: 40px;
+      padding: 20px;
+      background-color: rgba(52, 52, 43, 0.793);  
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+
+    #gameplaySection h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color:#fff
+    }
+    #gameplayImages {
+      display: flex;
+      overflow-x: auto; /* Enable horizontal scrolling */
+      margin-bottom: 20px;
+      justify-content: center;
+    }
+
+    #gameplayImages img {
+      max-width: 300px;
+      height: auto;
+      margin-right: 10px;
+    }
+
+
+    #gameplayVideosSection h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color:#fff
+    }
+    #gameplayVideosSection {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: rgba(52, 52, 43, 0.793); /* Background color */
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#gameplayVideos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
+
+
+
+    #gameplayVideos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.gameplay-video {
+  max-width: 300px;
+  height: auto;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+
+    #downloadButton {
+      display: block;
+      width: 200px;
+      padding: 25px;
+      background-color: rgba(52, 52, 43, 0.793); 
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      font-size: 30px;
+      margin: 50px auto;
+    }
+
+    #downloadButton:hover {
+      background-color: #06b300;
+      cursor: pointer; /* Change cursor on hover */
+      transform: scale(1.05); /* Scale up by 5% on hover */
+    }  
+  </style>
+
+</head>
+<body>
+  <div id="gameDetails">
+    <img id="gameImage" alt="Game Image">
+    <div class="game-info">
+      <h1 id="gameTitle">Game Title</h1>
+      <p><strong><h1>System Requirements:</h1></strong></p>
+      <ul id="systemRequirements"></ul>
+    </div>
+  </div>
+
+  <section id="aboutGameSection">
+    <h2>About Game</h2>
+    <div><p id="aboutGameDescription"></p></div> 
+  </section>
+  
+  <section id="gameplaySection">
+    <h2>Gameplay Pictures</h2>
+    <div id="gameplayImages"></div> <!-- Empty div to append gameplay images -->
+  </section>
+
+
+  <section id="gameplayVideosSection">
+    <h2>Gameplay Videos</h2>
+    <div id="gameplayVideos"></div> <!-- Empty div to append gameplay videos -->
+  </section>
+  
+  
+
+
+  
+  <a id="downloadButton" href="payment.html"> To payment</a>
+
+  <script>
+    const gameData = {
+      "Cyberpunk": {
+        imageUrl: "images/cyberpunk_2077.jpg",
+        description: " Cyberpunk 207712: Cyberpunk 2077 is a 2020 action role-playing video game developed by CD Projekt Red and published by CD Projekt1. The game is set in the dystopian Cyberpunk universe, in the fictional metropolis of Night City, California1. You play as V, a mercenary who accidentally gets a cybernetic “bio-chip” containing an engram of legendary rockstar and terrorist Johnny Silverhand (voiced by Keanu Reeves)1. As Johnny’s consciousness begins overwriting V’s own, the two must work together to separate and save V’s life1. The game is known for its open-world, action-adventure RPG elements set in a dark future of Night City — a dangerous megalopolis obsessed with power, glamor, and ceaseless body modification2.",
+        systemRequirements: {
+          minimum: {
+            cpu: "Intel Core i5-3570K or AMD FX-8310",
+            gpu: "NVIDIA GeForce GTX 780 or AMD Radeon RX 470",
+            ram: "8 GB",
+            storage: "70 GB"
+          },
+          recommended: {
+            cpu: "Intel Core i7-4790 or AMD Ryzen 3 3200G",
+            gpu: "NVIDIA GeForce GTX 1060 or AMD Radeon RX 590",
+            ram: "12 GB",
+            storage: "70 GB"
+          }
+        },
+        gameplayImages: [
+          "images/cyberpunk_2077.jpg",
+          "freeimage/image2.jpg",
+          "images/cyberpunk_2077.jpg",
+          "freeimage/image2.jpg",
+          "images/cyberpunk_2077.jpg",
+          "freeimage/image2.jpg",
+          "images/cyberpunk_2077.jpg",
+          "freeimage/image2.jpg",
+          "images/cyberpunk_2077.jpg",
+          "freeimage/image2.jpg",
+          "images/cyberpunk_2077.jpg",
+          "freeimage/image2.jpg",
+          // Add more gameplay images as needed
+        ],
+        
+        gameplayVideos: [
+      "images/video.mp4",
+      "images/video.mp4",
+      // Add more gameplay videos as needed
+      ]
+      },
+      "Creed": {
+        imageUrl: "images/Creed.jpg",
+        description: "Assassin’s Creed IV: Black Flag34: Assassin’s Creed IV: Black Flag is a 2013 action-adventure video game developed by Ubisoft Montreal and published by Ubisoft3. It is the sixth major installment in the Assassin’s Creed series3. The game’s plot is set in a fictional history of real-world events and follows the millennia-old struggle between the Assassins, who fight to preserve peace and free will, and the Templars, who desire peace through control3. You play as young captain Edward Kenway, standing among legendary pirates such as Blackbeard, Calico Jack and Benjamin Hornigold, as you establish a lawless republic in the Bahamas and relive the truly explosive events that defined the Golden Age of Pirates4.",
+        systemRequirements: {
+          minimum    : {
+            cpu: "Intel Core i5-2500K or AMD FX-6350",
+            gpu: "NVIDIA GeForce GTX 760 or AMD Radeon R9 270X",
+            ram: "8 GB",
+            storage: "50 GB"
+          },
+          recommended: {
+            cpu: "Intel Core i7-4790 or AMD Ryzen 5 3600",
+            gpu: "NVIDIA GeForce GTX 1070 or AMD Radeon RX Vega 56",
+            ram: "16 GB",
+            storage: "50 GB"
+          }
+        },
+        gameplayImages: [
+        "freeimage/image2.jpg",
+        "freeimage/image2.jpg",
+        "freeimage/image2.jpg",
+        "freeimage/image2.jpg",
+        "freeimage/image2.jpg",
+        "freeimage/image2.jpg",
+        "freeimage/image2.jpg",
+        "freeimage/image2.jpg",
+        "freeimage/image2.jpg",
+         
+          // gameplay images 
+        ], 
+        gameplayVideos: [
+      "images/demo.mp4",
+      "images/video.mp4",
+      // more gameplay videos
+      ]
+
+
+    
+      },
+      //  game titles and their corresponding system requirement
+    };
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const gameTitle = urlParams.get('title');
+      const downloadButton = document.getElementById('downloadButton');
+
+if (gameTitle) {
+  downloadButton.textContent = `Pay for ${gameTitle}`;
+  downloadButton.href = `payment.html?title=${encodeURIComponent(gameTitle)}`;
+}
+      const game = gameData[gameTitle];
+      
+      const gameImageElement = document.getElementById('gameImage');
+      gameImageElement.src = game.imageUrl;
+    
+      const gameTitleElement = document.getElementById('gameTitle');
+      gameTitleElement.textContent = gameTitle;
+    
+      const aboutGameDescriptionElement = document.getElementById('aboutGameDescription');
+      aboutGameDescriptionElement.textContent = game.description;
+
+      const systemRequirementsElement = document.getElementById('systemRequirements');
+      systemRequirementsElement.innerHTML = '';
+
+      for (const category in game.systemRequirements) {
+        const categoryRequirements = game.systemRequirements[category];
+        const categoryListItem = document.createElement('li');
+        categoryListItem.textContent = `${category}:`;
+        systemRequirementsElement.appendChild(categoryListItem);
+
+        const categoryList = document.createElement('ul');
+        categoryListItem.appendChild(categoryList);
+
+        for (const key in categoryRequirements) {
+          const listItem = document.createElement('li');
+          listItem.textContent = `${key}: ${categoryRequirements[key]}`;
+          categoryList.appendChild(listItem);
+        }
+      }
+
+      // Display gameplay images
+      const gameplayImagesContainer = document.getElementById('gameplayImages');
+      const gameplayImages = game.gameplayImages;
+
+      gameplayImages.forEach(imageUrl => {
+        const imgElement = document.createElement('img');
+        imgElement.src = imageUrl;
+        gameplayImagesContainer.appendChild(imgElement);
+      });
+
+      // Display gameplay videos
+  const gameplayVideosContainer = document.getElementById('gameplayVideos');
+  const gameplayVideos = game.gameplayVideos;
+
+  gameplayVideos.forEach(videoUrl => {
+    const videoElement = document.createElement('video');
+    videoElement.src = videoUrl;
+    videoElement.controls = true; // controls to the video player
+    videoElement.autoplay = true; // Autoplay the video
+    videoElement.muted = true;
+    videoElement.classList.add('gameplay-video'); // class for styling purposes
+    gameplayVideosContainer.appendChild(videoElement);
+  });
+    });
+  </script>
+</body>
+</html>
+

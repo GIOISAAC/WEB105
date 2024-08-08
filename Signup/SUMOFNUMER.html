@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Javascript Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-image: url('images/blueM.jpeg'); 
+            background-size:cover; 
+            background-position: center;
+            background-repeat: no-repeat; 
+            background-attachment: fixed;
+        }
+
+        form {
+            display:flex;
+            margin-top: 100px; 
+        }
+
+        input[type="text"],
+        input[type="button"] {
+            padding: 10px;
+            margin: 10px;
+            border: 2px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="text"] {
+            width: 100px; 
+        }
+
+        input[type="button"] {
+            background-color: #1821ab;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="button"]:hover {
+            background-color: #1821ab;
+        }
+
+        input[type="text"][readonly="readonly"] {
+            background-color: #f0f0f0;
+            cursor: default;
+        }
+    </style>
+    <script type="text/javascript">
+        function Calculatesum() {
+            var Value1 = parseInt(document.mainForm.textBox1.value);
+            var Value2 = parseInt(document.mainForm.textBox2.value);
+
+            var sum = Value1 + Value2;
+
+            document.mainForm.textBoxSum.value = sum;
+        }
+    </script>
+</head>
+
+<body>
+    <form name="mainForm">
+        <input type="text" name="textBox1" /> <br />
+        <input type="text" name="textBox2" /> <br />
+        <input type="button" value="Process" onclick="javascript:Calculatesum()" />
+        <input type="text" name="textBoxSum" readonly="readonly" />
+    </form>
+</body>
+
+</html>
